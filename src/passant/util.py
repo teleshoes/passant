@@ -63,6 +63,7 @@ def find_data_file(filename):
             os.path.join(bin_dir, '..', 'data'),
             os.path.join(bin_dir, '..', 'data/ui/qml'),
             os.path.join(bin_dir, '..', 'share/passant/qml'),
+            '/opt/passant/icons',
             '/opt/passant/qml',
     ]
 

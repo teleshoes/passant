@@ -11,15 +11,16 @@ SRC_DIR = 'src/'
 d2p = lambda d: d[len(SRC_DIR):].replace('/', '.')
 PACKAGES = [d2p(d) for d, dd, ff in os.walk(SRC_DIR) if '__init__.py' in ff]
 
-SCRIPTS = glob.glob('bin/*')
-
 DATA_FILES = [
-    ('share/passant', glob.glob('icons/*.png')),
-    ('share/passant/qml', glob.glob('data/ui/qml/*.qml')),
-    ('share/passant/qml/pieces/white', glob.glob('data/ui/qml/pieces/white/*.svg')),
-    ('share/passant/qml/pieces/black', glob.glob('data/ui/qml/pieces/black/*.svg')),
-    ('share/applications', ['data/passant.desktop']),
-    ('share/pixmaps', ['data/passant.svg']),
+    ('/opt/passant/bin', glob.glob('bin/*')),
+    ('/usr/share/applications', ['data/passant.desktop']),
+
+    ('/opt/passant/icons', glob.glob('data/*.png')),
+    ('/opt/passant/icons', glob.glob('data/*.svg')),
+
+    ('/opt/passant/qml', glob.glob('data/ui/qml/*.qml')),
+    ('/opt/passant/qml/pieces/white', glob.glob('data/ui/qml/pieces/white/*.svg')),
+    ('/opt/passant/qml/pieces/black', glob.glob('data/ui/qml/pieces/black/*.svg')),
 ]
 
 sys.path.insert(0, SRC_DIR)
@@ -34,6 +35,5 @@ setup(
         url='http://github.org/xerxes2/passant',
         packages=PACKAGES,
         package_dir={ '': SRC_DIR },
-        scripts=SCRIPTS,
         data_files=DATA_FILES,
 )
