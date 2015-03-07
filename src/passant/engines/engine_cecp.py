@@ -9,7 +9,7 @@ class EngineCECP():
         self.output_callback = _callback
 
     def start_engine(self, _engine):
-        self.engine = subprocess.Popen([_engine, "-q"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        self.engine = subprocess.Popen([_engine], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         self.send_command("xboard")
         self.thread_id = thread.start_new_thread(self.engine_thread, ())
 
