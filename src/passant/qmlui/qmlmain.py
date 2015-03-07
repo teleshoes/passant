@@ -15,7 +15,7 @@ from passant import validator
 from passant.formats import format_pgn
 from passant.engines import engine_cecp
 
-GNUCHESS_EXEC = "/usr/bin/gnuchess"
+GNUCHESS_EXEC = "/usr/games/gnuchess"
 
 class PassantGUI(QtCore.QObject):
     def __init__(self):
