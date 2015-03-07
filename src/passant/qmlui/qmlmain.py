@@ -15,6 +15,8 @@ from passant import validator
 from passant.formats import format_pgn
 from passant.engines import engine_cecp
 
+GNUCHESS_EXEC = "/usr/bin/gnuchess"
+
 class PassantGUI(QtCore.QObject):
     def __init__(self):
         QtCore.QObject.__init__(self)
@@ -113,7 +115,7 @@ class PassantGUI(QtCore.QObject):
         self.view.rootObject().property("root").openManualGame()
 
     def new_engine_game_callback(self):
-        if not os.path.isfile("/usr/bin/gnuchess"):
+        if not os.path.isfile(GNUCHESS_EXEC):
             _str = "You have to install Gnuchess to be able to play against engine!"
             self.view.rootObject().property("root").openAppError(_str)
         else:
@@ -148,7 +150,7 @@ class PassantGUI(QtCore.QObject):
         self.active_square = ""
         self.on_square.emit()
         self.view.rootObject().property("root").startNewGame()
-        self.engine.start_engine("gnuchess")
+        self.engine.start_engine(GNUCHESS_EXEC)
         if _time:
             self.engine.set_time_per_move(_time)
         if self.engine_player == "w":
