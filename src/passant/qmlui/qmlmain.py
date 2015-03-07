@@ -48,10 +48,10 @@ class PassantGUI(QtCore.QObject):
         
         self.view.setAttribute(QtCore.Qt.WA_LockLandscapeOrientation)
         if platform.HARMATTAN:
-            self.view.setSource(util.find_data_file("qml/main_harmattan.qml"))
+            self.view.setSource(util.find_data_file("main_harmattan.qml"))
             self.view.showFullScreen()
         else:
-            self.view.setSource(util.find_data_file("qml/main_default.qml"))
+            self.view.setSource(util.find_data_file("main_default.qml"))
             self.view.show()
         self.app.exec_()
 
